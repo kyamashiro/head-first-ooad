@@ -6,8 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Chapter1\\Builder' => $baseDir . '/chapter1/src/Builder.php',
     'Chapter1\\Guitar' => $baseDir . '/chapter1/src/Guitar.php',
     'Chapter1\\Inventory' => $baseDir . '/chapter1/src/Inventory.php',
+    'Chapter1\\Type' => $baseDir . '/chapter1/src/Type.php',
+    'Chapter1\\Wood' => $baseDir . '/chapter1/src/Wood.php',
     'DeepCopy\\DeepCopy' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
     'DeepCopy\\Exception\\CloneException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
     'DeepCopy\\Exception\\PropertyException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',

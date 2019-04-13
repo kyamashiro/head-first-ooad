@@ -83,8 +83,11 @@ class ComposerStaticInit3c6e7f04dccccce0cc953a7287e2ac86
     );
 
     public static $classMap = array (
+        'Chapter1\\Builder' => __DIR__ . '/../..' . '/chapter1/src/Builder.php',
         'Chapter1\\Guitar' => __DIR__ . '/../..' . '/chapter1/src/Guitar.php',
         'Chapter1\\Inventory' => __DIR__ . '/../..' . '/chapter1/src/Inventory.php',
+        'Chapter1\\Type' => __DIR__ . '/../..' . '/chapter1/src/Type.php',
+        'Chapter1\\Wood' => __DIR__ . '/../..' . '/chapter1/src/Wood.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',

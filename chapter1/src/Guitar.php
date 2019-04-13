@@ -9,7 +9,7 @@ class Guitar
      */
     private $serialNumber;
     /**
-     * @var string
+     * @var Builder
      */
     private $builder;
     /**
@@ -17,15 +17,15 @@ class Guitar
      */
     private $model;
     /**
-     * @var string
+     * @var Type
      */
     private $type;
     /**
-     * @var string
+     * @var Wood
      */
     private $backWood;
     /**
-     * @var string
+     * @var Wood
      */
     private $topWood;
     /**
@@ -36,14 +36,14 @@ class Guitar
     /**
      * Guitar constructor.
      * @param string $serialNumber
-     * @param string $builder
-     * @param string $model
-     * @param string $type
-     * @param string $backWood
-     * @param string $topWood
      * @param float $price
+     * @param Builder $builder
+     * @param string $model
+     * @param Type $type
+     * @param Wood $backWood
+     * @param Wood $topWood
      */
-    public function __construct(string $serialNumber, float $price, string $builder, string $model, string $type, string $backWood, string $topWood)
+    public function __construct(string $serialNumber, float $price, Builder $builder, string $model, Type $type, Wood $backWood, Wood $topWood)
     {
         $this->serialNumber = $serialNumber;
         $this->builder = $builder;
@@ -54,19 +54,18 @@ class Guitar
         $this->price = $price;
     }
 
-
     /**
      * @return string
      */
-    public function getSerialNumber()
+    public function getSerialNumber(): string
     {
         return $this->serialNumber;
     }
 
     /**
-     * @return string
+     * @return Builder
      */
-    public function getBuilder()
+    public function getBuilder(): Builder
     {
         return $this->builder;
     }
@@ -74,31 +73,31 @@ class Guitar
     /**
      * @return string
      */
-    public function getModel()
+    public function getModel(): string
     {
         return $this->model;
     }
 
     /**
-     * @return string
+     * @return Type
      */
-    public function getType()
+    public function getType(): Type
     {
         return $this->type;
     }
 
     /**
-     * @return string
+     * @return Wood
      */
-    public function getBackWood()
+    public function getBackWood(): Wood
     {
         return $this->backWood;
     }
 
     /**
-     * @return string
+     * @return Wood
      */
-    public function getTopWood()
+    public function getTopWood(): Wood
     {
         return $this->topWood;
     }
@@ -106,7 +105,7 @@ class Guitar
     /**
      * @return float
      */
-    public function getPrice()
+    public function getPrice(): float
     {
         return $this->price;
     }
