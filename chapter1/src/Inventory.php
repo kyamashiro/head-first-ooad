@@ -47,10 +47,12 @@ class Inventory
 
     /**
      * @param Guitar $searchGuitar
-     * @return Guitar|mixed
+     * @return Guitar[]
      */
-    public function search(Guitar $searchGuitar): ?Guitar
+    public function search(Guitar $searchGuitar): array
     {
+        $matching_guitars = [];
+
         foreach ($this->guitars as $guitar) {
             if (!$searchGuitar->getBuilder()->equals($guitar->getBuilder())) {
                 continue;
@@ -73,8 +75,8 @@ class Inventory
                 continue;
             }
 
-            return $guitar;
+            $matching_guitars[] = $guitar;
         }
-        return null;
+        return $matching_guitars;
     }
 }

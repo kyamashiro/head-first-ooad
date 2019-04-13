@@ -14,19 +14,27 @@ class FindGuitarTest extends TestCase
         $inventory = new  Inventory();
         self::initializeInventory($inventory);
         $whatErinLikes = new Guitar('', 0, Builder::FENDER(), 'Stratocaster', Type::ELECTRIC(), Wood::ALDER(), Wood::ALDER());
-        $guitar = $inventory->search($whatErinLikes);
-        if ($guitar !== null) {
-            $result = 'Erin, you might like this ' . $guitar->getBuilder() . ' ' . $guitar->getModel() . ' ' .
-                $guitar->getType() . ' guitar:\n' . $guitar->getBackWood() . ' back and sides, \n' . $guitar->getTopWood() . ' top.\nYou can have it for only $' . $guitar->getPrice() . '!';
+        $matching_guitars = $inventory->search($whatErinLikes);
+
+        if ($matching_guitars) {
+            $result = 'Erin, you might like guitars: ';
+            foreach ($matching_guitars as $matching_guitar) {
+                if ($matching_guitar !== null) {
+                    $result .= 'We have a ' . $matching_guitar->getBuilder() . ' ' . $matching_guitar->getModel() . ' '
+                        . $matching_guitar->getType() . ' guitar:\n' . $matching_guitar->getBackWood() . ' back and sides, \n'
+                        . $matching_guitar->getTopWood() . ' top.\nYou can have it for only $' . $matching_guitar->getPrice() . '!\n ----';
+                }
+            }
         } else {
             $result = 'Sorry, Erin, we have nothing for you';
         }
-        print_r($result);
-        $this->assertNotEquals('Sorry, Erin, we have nothing for you', $result);
+
+        $this->assertEquals(2, count($matching_guitars));
     }
 
     private static function initializeInventory(Inventory $inventory): void
     {
         $inventory->addGuitar('V95693', 1499.95, Builder::FENDER(), 'Stratocaster', Type::ELECTRIC(), Wood::ALDER(), Wood::ALDER());
+        $inventory->addGuitar('V9512', 1449.95, Builder::FENDER(), 'Stratocaster', Type::ELECTRIC(), Wood::ALDER(), Wood::ALDER());
     }
 }
