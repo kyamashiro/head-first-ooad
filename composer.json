@@ -6,5 +6,8 @@
     "psr-4": {
       "Chapter1\\": "chapter1/src"
     }
+  },
+  "require": {
+    "myclabs/php-enum": "^1.6"
   }
 }
