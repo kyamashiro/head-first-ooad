@@ -7,7 +7,7 @@ use Chapter1\Type;
 use Chapter1\Wood;
 use PHPUnit\Framework\TestCase;
 
-class FindGuitarTester extends TestCase
+class FindGuitarTest extends TestCase
 {
     public function test_search()
     {
