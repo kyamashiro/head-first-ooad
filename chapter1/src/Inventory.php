@@ -20,15 +20,11 @@ class Inventory
     /**
      * @param string $serialNumber
      * @param float $price
-     * @param Builder $builder
-     * @param string $model
-     * @param Type $type
-     * @param Wood $backWood
-     * @param Wood $topWood
+     * @param GuitarSpec $guitarSpec
      */
-    public function addGuitar(string $serialNumber, float $price, Builder $builder, string $model, Type $type, Wood $backWood, Wood $topWood): void
+    public function addGuitar(string $serialNumber, float $price, GuitarSpec $guitarSpec): void
     {
-        $this->guitars[] = new Guitar($serialNumber, $price, $builder, $model, $type, $backWood, $topWood);
+        $this->guitars[] = new Guitar($serialNumber, $price, $guitarSpec);
     }
 
     /**
@@ -46,37 +42,40 @@ class Inventory
     }
 
     /**
-     * @param Guitar $searchGuitar
+     * @param GuitarSpec $searchSpec
      * @return Guitar[]
      */
-    public function search(Guitar $searchGuitar): array
+    public function search(GuitarSpec $searchSpec): array
     {
         $matching_guitars = [];
 
         foreach ($this->guitars as $guitar) {
-            if (!$searchGuitar->getBuilder()->equals($guitar->getBuilder())) {
+            $guitarSpec = $guitar->getSpec();
+
+            if (!$searchSpec->getBuilder()->equals($guitarSpec->getBuilder())) {
                 continue;
             }
 
-            $model = $searchGuitar->getModel();
-            if (($model !== null) && ($model !== '') && (strtolower($model) !== strtolower($guitar->getModel()))) {
+            $model = $searchSpec->getModel();
+            if (($model !== null) && ($model !== '') && (strtolower($model) !== strtolower($guitarSpec->getModel()))) {
                 continue;
             }
 
-            if (!$searchGuitar->getType()->equals($guitar->getType())) {
+            if (!$searchSpec->getType()->equals($guitarSpec->getType())) {
                 continue;
             }
 
-            if (!$searchGuitar->getBackWood()->equals($guitar->getBackWood())) {
+            if (!$searchSpec->getBackWood()->equals($guitarSpec->getBackWood())) {
                 continue;
             }
 
-            if (!$searchGuitar->getTopWood()->equals($guitar->getTopWood())) {
+            if (!$searchSpec->getTopWood()->equals($guitarSpec->getTopWood())) {
                 continue;
             }
 
             $matching_guitars[] = $guitar;
         }
+
         return $matching_guitars;
     }
 }
