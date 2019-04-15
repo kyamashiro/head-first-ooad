@@ -14,7 +14,7 @@ class FindGuitarTest extends TestCase
     {
         $inventory = new  Inventory();
         self::initializeInventory($inventory);
-        $whatErinLikes = new GuitarSpec(Builder::FENDER(), 'Stratocaster', Type::ELECTRIC(), Wood::ALDER(), Wood::ALDER());
+        $whatErinLikes = new GuitarSpec(Builder::FENDER(), 'Stratocaster', Type::ELECTRIC(), Wood::ALDER(), Wood::ALDER(), 6);
         $matching_guitars = $inventory->search($whatErinLikes);
 
         if ($matching_guitars) {
@@ -36,7 +36,7 @@ class FindGuitarTest extends TestCase
 
     private static function initializeInventory(Inventory $inventory): void
     {
-        $inventory->addGuitar('V95693', 1499.95, new GuitarSpec(Builder::FENDER(), 'Stratocaster', Type::ELECTRIC(), Wood::ALDER(), Wood::ALDER()));
-        $inventory->addGuitar('V9512', 1449.95, new GuitarSpec(Builder::FENDER(), 'Stratocaster', Type::ELECTRIC(), Wood::ALDER(), Wood::ALDER()));
+        $inventory->addGuitar('V95693', 1499.95, new GuitarSpec(Builder::FENDER(), 'Stratocaster', Type::ELECTRIC(), Wood::ALDER(), Wood::ALDER(), 6));
+        $inventory->addGuitar('V9512', 1449.95, new GuitarSpec(Builder::FENDER(), 'Stratocaster', Type::ELECTRIC(), Wood::ALDER(), Wood::ALDER(), 6));
     }
 }

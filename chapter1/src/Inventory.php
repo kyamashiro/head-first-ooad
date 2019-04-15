@@ -50,30 +50,9 @@ class Inventory
         $matching_guitars = [];
 
         foreach ($this->guitars as $guitar) {
-            $guitarSpec = $guitar->getSpec();
-
-            if (!$searchSpec->getBuilder()->equals($guitarSpec->getBuilder())) {
-                continue;
+            if ($guitar->getSpec()->match($searchSpec)) {
+                $matching_guitars[] = $guitar;
             }
-
-            $model = $searchSpec->getModel();
-            if (($model !== null) && ($model !== '') && (strtolower($model) !== strtolower($guitarSpec->getModel()))) {
-                continue;
-            }
-
-            if (!$searchSpec->getType()->equals($guitarSpec->getType())) {
-                continue;
-            }
-
-            if (!$searchSpec->getBackWood()->equals($guitarSpec->getBackWood())) {
-                continue;
-            }
-
-            if (!$searchSpec->getTopWood()->equals($guitarSpec->getTopWood())) {
-                continue;
-            }
-
-            $matching_guitars[] = $guitar;
         }
 
         return $matching_guitars;
