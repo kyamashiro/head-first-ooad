@@ -31,6 +31,10 @@ class GuitarSpec
      * @var Wood
      */
     private $topWood;
+    /**
+     * @var int
+     */
+    private $numStrings;
 
     /**
      * GuitarSpec constructor.
@@ -40,13 +44,14 @@ class GuitarSpec
      * @param Wood $backWood
      * @param Wood $topWood
      */
-    public function __construct(Builder $builder, string $model, Type $type, Wood $backWood, Wood $topWood)
+    public function __construct(Builder $builder, string $model, Type $type, Wood $backWood, Wood $topWood, int $numStrings)
     {
         $this->builder = $builder;
         $this->model = $model;
         $this->type = $type;
         $this->backWood = $backWood;
         $this->topWood = $topWood;
+        $this->numStrings = $numStrings;
     }
 
     /**
@@ -87,5 +92,42 @@ class GuitarSpec
     public function getTopWood(): Wood
     {
         return $this->topWood;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumStrings(): int
+    {
+        return $this->numStrings;
+    }
+
+    public function match(GuitarSpec $guitarSpec): bool
+    {
+        if (!$this->builder->equals($guitarSpec->builder)) {
+            return false;
+        }
+
+        if (($this->model !== null) && ($this->model !== '') && (strtolower($this->model) !== strtolower($guitarSpec->model))) {
+            return false;
+        }
+
+        if ($this->numStrings !== $guitarSpec->numStrings) {
+            return false;
+        }
+
+        if (!$this->type->equals($guitarSpec->type)) {
+            return false;
+        }
+
+        if (!$this->backWood->equals($guitarSpec->backWood)) {
+            return false;
+        }
+
+        if (!$this->topWood->equals($guitarSpec->topWood)) {
+            return false;
+        }
+
+        return true;
     }
 }
