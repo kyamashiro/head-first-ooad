@@ -12,5 +12,6 @@ return array(
     'MyCLabs\\Enum\\' => array($vendorDir . '/myclabs/php-enum/src'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
+    'Chapter2\\' => array($baseDir . '/chapter2/src'),
     'Chapter1\\' => array($baseDir . '/chapter1/src'),
 );

@@ -1,7 +1,6 @@
 <?php
 
 use Chapter1\Builder;
-use Chapter1\Guitar;
 use Chapter1\GuitarSpec;
 use Chapter1\Inventory;
 use Chapter1\Type;
