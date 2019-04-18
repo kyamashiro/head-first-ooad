@@ -27,6 +27,8 @@ class Remote
             $this->door->close();
         } else {
             $this->door->open();
+            sleep(5);
+            $this->door->close();
         }
     }
 

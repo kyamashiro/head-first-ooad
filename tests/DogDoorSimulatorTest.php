@@ -14,12 +14,8 @@ class DogDoorSimulatorTest extends TestCase
         echo 'Fidoが外に出たいと吠える...\n';
         $remote->pressButton();
         echo 'Fidoが外に出る\n';
-        $remote->pressButton();
         echo 'Fidoが用を済ます\n';
-        $remote->pressButton();
-        $this->assertEquals($door->isOpen(), true);
         echo 'Fidoが家の中に戻る...\n';
-        $remote->pressButton();
         $this->assertEquals($door->isOpen(), false);
     }
 }
