@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  ### PHP & Apache ##############################################
+  php-apache:
+    build: ./php-apache
+    container_name: php-apache
+    ports:
+      - 80:80
+    privileged: true
+    volumes:
+      - .:/var/www/html
