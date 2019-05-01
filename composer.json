@@ -5,7 +5,8 @@
   "autoload": {
     "psr-4": {
       "Chapter1\\": "chapter1/src",
-      "Chapter2\\": "chapter2/src"
+      "Chapter2\\": "chapter2/src",
+      "Chapter3\\": "chapter3/src"
     }
   },
   "require": {
