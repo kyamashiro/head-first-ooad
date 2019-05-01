@@ -16,6 +16,6 @@ class DogDoorSimulatorTest extends TestCase
         echo 'Fidoが外に出る\n';
         echo 'Fidoが用を済ます\n';
         echo 'Fidoが家の中に戻る...\n';
-        $this->assertEquals($door->isOpen(), false);
+        $this->assertEquals(false, $door->isOpen());
     }
 }
