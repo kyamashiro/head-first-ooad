@@ -35,6 +35,7 @@ class ComposerStaticInit3c6e7f04dccccce0cc953a7287e2ac86
         ),
         'C' => 
         array (
+            'Chapter4\\' => 9,
             'Chapter3\\' => 9,
             'Chapter2\\' => 9,
             'Chapter1\\' => 9,
@@ -67,6 +68,10 @@ class ComposerStaticInit3c6e7f04dccccce0cc953a7287e2ac86
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'Chapter4\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/chapter4/src',
         ),
         'Chapter3\\' => 
         array (
