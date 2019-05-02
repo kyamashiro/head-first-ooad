@@ -9,9 +9,9 @@ class DogDoor
      */
     private $open;
     /**
-     * @var Bark
+     * @var Bark[]
      */
-    private $allowed_bark;
+    private $allowed_barks;
 
     /**
      * DogDoor constructor.
@@ -50,18 +50,18 @@ class DogDoor
     }
 
     /**
-     * @return Bark
+     * @return array
      */
-    public function getAllowedBark(): Bark
+    public function getAllowedBarks(): array
     {
-        return $this->allowed_bark;
+        return $this->allowed_barks;
     }
 
     /**
-     * @param Bark $bark
+     * @param Bark $barks
      */
-    public function setAllowedBark(Bark $bark): void
+    public function setAllowedBark(Bark $barks): void
     {
-        $this->allowed_bark = $bark;
+        $this->allowed_barks[] = $barks;
     }
 }

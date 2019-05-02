@@ -20,14 +20,18 @@ class BarkRecognizer
         $this->door = $door;
     }
 
-    public function recognize(Bark $bark)
+    public function recognize(Bark $bark): bool
     {
         echo "BarkRecognizer: 検知->{$bark->getSound()}\n";
-        //鳴き声の比較
-        if ($this->door->getAllowedBark()->equals($bark)) {
-            $this->door->open();
-        } else {
-            echo 'この犬は許可されていません\n';
+        /* @var $allowed_barks Bark[] */
+        $allowed_barks = $this->door->getAllowedBarks();
+        foreach ($allowed_barks as $allowed_bark) {
+            if ($allowed_bark->equals($bark)) {
+                $this->door->open();
+                return true;
+            }
         }
+        echo 'この犬は許可されていません\n';
+        return false;
     }
 }
