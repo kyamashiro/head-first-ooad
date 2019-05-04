@@ -1,0 +1,58 @@
+@startuml
+
+Inventory -->"*" Guitar
+GuitarSpec "1"<-left- Guitar
+Inventory --> GuitarSpec
+GuitarSpec --> Builder
+GuitarSpec --> Wood
+GuitarSpec --> Type
+
+class Inventory {
+Object[] elementData
+addGuitar(string, double, GuitarSpec)
+getGuitar(string):Guitar
+search(GuitarSpec):Guitar[*]
+}
+
+class Guitar {
+serialNumber string
+price double
+getSerialNumber():string
+getPrice():double
+setPrice(float)
+getSpec():GuitarSpec
+}
+
+class GuitarSpec {
+model:string
+numStrings:int
+getBuilder():Builder
+getModel():string
+getType():Type
+getBackWood():Wood
+getTopWood():Wood
+getNumStrings():int
+}
+
+class Builder{
+toString():string
+}
+
+class Type{
+toString():string
+}
+
+class Wood{
+toString():string
+}
+
+class Instrument{
+serialNumber string
+price double
+getSerialNumber():string
+getPrice():double
+setPrice(float)
+getSpec():GuitarSpec
+}
+
+@enduml
