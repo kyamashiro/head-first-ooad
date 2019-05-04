@@ -7,7 +7,8 @@
       "Chapter1\\": "chapter1/src",
       "Chapter2\\": "chapter2/src",
       "Chapter3\\": "chapter3/src",
-      "Chapter4\\": "chapter4/src"
+      "Chapter4\\": "chapter4/src",
+      "Chapter5\\": "chapter5/src"
     }
   },
   "require": {
