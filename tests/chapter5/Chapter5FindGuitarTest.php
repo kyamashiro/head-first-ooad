@@ -7,6 +7,9 @@ use Chapter5\Type;
 use Chapter5\Wood;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @group chapter5
+ */
 class Chapter5FindGuitarTest extends TestCase
 {
     public function test_search()
@@ -14,7 +17,7 @@ class Chapter5FindGuitarTest extends TestCase
         $inventory = new Inventory();
         self::initializeInventory($inventory);
         $whatErinLikes = new GuitarSpec(Builder::FENDER(), 'Stratocaster', Type::ELECTRIC(), 6, Wood::ALDER(), Wood::ALDER());
-        $matching_guitars = $inventory->guitarSearch($whatErinLikes);
+        $matching_guitars = $inventory->search($whatErinLikes);
 
         $this->assertEquals(2, count($matching_guitars));
     }

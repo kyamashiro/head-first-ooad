@@ -9,6 +9,9 @@ use Chapter5\Type;
 use Chapter5\Wood;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @group chapter5
+ */
 class FindMandolinTest extends TestCase
 {
     public function test_search()
@@ -16,7 +19,7 @@ class FindMandolinTest extends TestCase
         $inventory = new Inventory();
         self::initializeInventory($inventory);
         $whatErinLikes = new MandolinSpec(Builder::FENDER(), 'Stratocaster', Type::ELECTRIC(), Style::F(), Wood::ALDER(), Wood::ALDER());
-        $matchingMandolins = $inventory->mandolinSearch($whatErinLikes);
+        $matchingMandolins = $inventory->search($whatErinLikes);
 
         $this->assertEquals(1, count($matchingMandolins));
     }
