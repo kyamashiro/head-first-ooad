@@ -1,0 +1,31 @@
+@startuml
+
+Painter -right-> PaintStyle
+PaintStyle .-|>ModernPaintStyle
+PaintStyle .-|>SurrealPaintStyle
+PaintStyle .-|>CubistPaintStyle
+
+class Painter {
+prepareEasel()
+cleanBrushes()
+setPaintStyle(PaintStyle)
+}
+
+Interface PaintStyle {
+getStyle():string
+paint()
+}
+
+class ModernPaintStyle {
+paint()
+}
+
+class CubistPaintStyle {
+paint()
+}
+
+class SurrealPaintStyle {
+paint()
+}
+
+@enduml

@@ -1,17 +1,44 @@
 @startuml
 
-Inventory -->"*" Guitar
-GuitarSpec "1"<-left- Guitar
-Inventory --> GuitarSpec
-GuitarSpec --> Builder
-GuitarSpec --> Wood
-GuitarSpec --> Type
+Inventory -down->"*" Instrument
+Instrument o-right-"1" InstrumentSpec
+Mandolin -up-|> Instrument
+note right on link
+  汎化
+end note
+Guitar -up-|> Instrument
+note right on link
+  汎化
+end note
+
+InstrumentSpec -up->"1" Builder
+InstrumentSpec -up->"1" Type
+InstrumentSpec -right->"1" Wood : TopWood
+InstrumentSpec -right->"1" Wood : BackWood
+Builder -[hidden]down- Type
+Type -[hidden]down- Wood
+
+MandolinSpec -up-|> InstrumentSpec
+note right on link
+  汎化
+end note
+
+MandolinSpec -->"1" Style
+GuitarSpec -up-|> InstrumentSpec
+note right on link
+  汎化
+end note
+
+note left of Instrument
+  集約
+end note
 
 class Inventory {
-Object[] elementData
-addGuitar(string, double, GuitarSpec)
-getGuitar(string):Guitar
-search(GuitarSpec):Guitar[*]
+inventory:Instrument[*]
+addInstrument(string, double, InstrumentSpec)
+get(string):Instrument
+guitarSearch(GuitarSpec):Guitar[*]
+mandolinSearch(MandolinSpec):Mandolin[*]
 }
 
 class Guitar {
@@ -23,36 +50,64 @@ setPrice(float)
 getSpec():GuitarSpec
 }
 
-class GuitarSpec {
-model:string
-numStrings:int
-getBuilder():Builder
-getModel():string
-getType():Type
-getBackWood():Wood
-getTopWood():Wood
-getNumStrings():int
-}
-
-class Builder{
-toString():string
-}
-
-class Type{
-toString():string
-}
-
-class Wood{
-toString():string
-}
-
-class Instrument{
+class Mandolin {
 serialNumber string
 price double
 getSerialNumber():string
 getPrice():double
 setPrice(float)
-getSpec():GuitarSpec
+getSpec():MandolinSpec
+}
+
+abstract class InstrumentSpec{
+builder:Builder
+type:Type
+topWood:Wood
+backWood:Wood
+model:string
+getBuilder():Builder
+getModel():string
+getType():Type
+getBackWood():Wood
+getTopWood():Wood
+matches(InstrumentSpec):boolean
+}
+
+class GuitarSpec {
+numStrings:int
+getNumStrings():int
+matches(GuitarSpec):boolean
+}
+
+class MandolinSpec {
+style:Style
+getStyle():Style
+matches(MandolinSpec):boolean
+}
+
+Enum Style{
+toString():string
+}
+
+Enum Builder{
+toString():string
+}
+
+Enum Type{
+toString():string
+}
+
+Enum Wood{
+toString():string
+}
+
+abstract class Instrument{
+serialNumber string
+price double
+getSerialNumber():string
+getPrice():double
+setPrice(float)
+getSpec():InstrumentSpec
 }
 
 @enduml

@@ -1,0 +1,9 @@
+@startuml
+
+class Painter {
+prepareEasel()
+cleanBrushes()
+paint()
+}
+
+@enduml

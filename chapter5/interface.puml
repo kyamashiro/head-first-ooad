@@ -1,0 +1,19 @@
+@startuml
+
+Team .|> Athlete : "柔軟"
+Team --> BaseballPlayer : "制限がある"
+
+class Team {
+addPlayer(???)
+}
+
+Interface Athlete {
+getSport():string
+play()
+}
+
+class BaseballPlayer {
+play()
+}
+
+@enduml

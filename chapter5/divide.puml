@@ -1,0 +1,22 @@
+@startuml
+
+class Automobile {
+start()
+stop()
+getOil():int
+}
+
+class CarWash {
+wash(Automobile)
+}
+
+class Driver {
+drive(Automobile)
+}
+
+class Mechanic {
+checkOil(Automobile)
+changeTires(Automobile, Tire[*])
+}
+
+@enduml
