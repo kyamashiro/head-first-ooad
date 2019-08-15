@@ -24,15 +24,7 @@ class Inventory
      */
     public function addInstrument(string $serialNumber, float $price, InstrumentSpec $spec): void
     {
-        $instrument = null;
-
-        if ($spec instanceof GuitarSpec) {
-            $instrument = new Guitar($serialNumber, $price, $spec);
-        } else if ($spec instanceof MandolinSpec) {
-            $instrument = new Mandolin($serialNumber, $price, $spec);
-        }
-
-        $this->inventory[] = $instrument;
+        $this->inventory[] = new Instrument($serialNumber, $price, $spec);
     }
 
     /**
@@ -50,36 +42,18 @@ class Inventory
     }
 
     /**
-     * @param GuitarSpec $searchSpec
-     * @return Guitar[]
+     * @param InstrumentSpec $searchSpec
+     * @return Instrument[]
      */
-    public function guitarSearch(GuitarSpec $searchSpec): array
+    public function search(InstrumentSpec $searchSpec): array
     {
-        $matchingGuitars = [];
+        $matchingInstruments = [];
 
-        foreach ($this->inventory as $guitar) {
-            if ($guitar->getSpec()->matches($searchSpec)) {
-                $matchingGuitars[] = $guitar;
+        foreach ($this->inventory as $instrument) {
+            if ($instrument->getSpec()->matches($searchSpec)) {
+                $matchingInstruments[] = $instrument;
             }
         }
-
-        return $matchingGuitars;
-    }
-
-    /**
-     * @param MandolinSpec $searchSpec
-     * @return Mandolin[]
-     */
-    public function mandolinSearch(MandolinSpec $searchSpec): array
-    {
-        $matchingMandolins = [];
-
-        foreach ($this->inventory as $mandolin) {
-            if ($mandolin->getSpec()->matches($searchSpec)) {
-                $matchingMandolins[] = $mandolin;
-            }
-        }
-
-        return $matchingMandolins;
+        return $matchingInstruments;
     }
 }
