@@ -1,0 +1,29 @@
+@startuml
+
+Inventory -down->"*" Instrument
+Instrument o-down-"1" InstrumentSpec
+
+class Inventory {
+inventory:Instrument[*]
+addInstrument(string, float, InstrumentSpec)
+get(string):Instrument
+search(InstrumentSpec):Instrument[*]
+}
+
+class Instrument{
+serialNumber:string
+price:float
+getSerialNumber():string
+getPrice():float
+setPrice(float)
+getSpec():InstrumentSpec
+}
+
+class InstrumentSpec{
+properties:array
+getProperty(string):mixed
+getProperties():array
+matches(InstrumentSpec):bool
+}
+
+@enduml

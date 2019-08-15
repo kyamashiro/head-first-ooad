@@ -35,7 +35,7 @@ end note
 
 class Inventory {
 inventory:Instrument[*]
-addInstrument(string, double, InstrumentSpec)
+addInstrument(string, float, InstrumentSpec)
 get(string):Instrument
 guitarSearch(GuitarSpec):Guitar[*]
 mandolinSearch(MandolinSpec):Mandolin[*]
@@ -43,18 +43,18 @@ mandolinSearch(MandolinSpec):Mandolin[*]
 
 class Guitar {
 serialNumber string
-price double
+price float
 getSerialNumber():string
-getPrice():double
+getPrice():float
 setPrice(float)
 getSpec():GuitarSpec
 }
 
 class Mandolin {
 serialNumber string
-price double
+price float
 getSerialNumber():string
-getPrice():double
+getPrice():float
 setPrice(float)
 getSpec():MandolinSpec
 }
@@ -103,9 +103,9 @@ toString():string
 
 abstract class Instrument{
 serialNumber string
-price double
+price float
 getSerialNumber():string
-getPrice():double
+getPrice():float
 setPrice(float)
 getSpec():InstrumentSpec
 }
