@@ -2,6 +2,8 @@
 
 namespace Chapter5;
 
+use MyCLabs\Enum\Enum;
+
 class InstrumentSpec
 {
 
@@ -19,6 +21,10 @@ class InstrumentSpec
         $this->properties = $properties;
     }
 
+    /**
+     * @param string $propertyName
+     * @return mixed
+     */
     public function getProperty(string $propertyName)
     {
         return $this->properties[$propertyName];
@@ -34,7 +40,7 @@ class InstrumentSpec
 
     public function matches(InstrumentSpec $spec): bool
     {
-        foreach ($spec->getProperties() as $property) {
+        foreach ($spec->getProperties() as $property => $value) {
             if ($this->properties[$property] !== $spec->getProperty($property)) {
                 return false;
             }
