@@ -2,104 +2,44 @@
 
 namespace Chapter5;
 
-abstract class InstrumentSpec
+class InstrumentSpec
 {
+
     /**
-     * @var Builder
+     * @var array
      */
-    private $builder;
-    /**
-     * @var string
-     */
-    private $model;
-    /**
-     * @var Type
-     */
-    private $type;
-    /**
-     * @var Wood
-     */
-    private $backWood;
-    /**
-     * @var Wood
-     */
-    private $topWood;
+    private $properties;
 
     /**
      * InstrumentSpec constructor.
-     * @param Builder $builder
-     * @param string $model
-     * @param Type $type
-     * @param Wood $backWood
-     * @param Wood $topWood
+     * @param $properties
      */
-    public function __construct(Builder $builder, string $model, Type $type, Wood $backWood, Wood $topWood)
+    public function __construct(array $properties)
     {
-        $this->builder = $builder;
-        $this->model = $model;
-        $this->type = $type;
-        $this->backWood = $backWood;
-        $this->topWood = $topWood;
+        $this->properties = $properties;
+    }
+
+    public function getProperty(string $propertyName)
+    {
+        return $this->properties[$propertyName];
     }
 
     /**
-     * @return Builder
+     * @return array
      */
-    public function getBuilder(): Builder
+    public function getProperties(): array
     {
-        return $this->builder;
+        return $this->properties;
     }
 
-    /**
-     * @return string
-     */
-    public function getModel(): string
+    public function matches(InstrumentSpec $spec): bool
     {
-        return $this->model;
-    }
-
-    /**
-     * @return Type
-     */
-    public function getType(): Type
-    {
-        return $this->type;
-    }
-
-    /**
-     * @return Wood
-     */
-    public function getBackWood(): Wood
-    {
-        return $this->backWood;
-    }
-
-    /**
-     * @return Wood
-     */
-    public function getTopWood(): Wood
-    {
-        return $this->topWood;
-    }
-
-    public function matches(InstrumentSpec $otherSpec): bool
-    {
-        if (!$this->builder->equals($otherSpec->getBuilder())) {
-            return false;
+        foreach ($spec->getProperties() as $property) {
+            if ($this->properties[$property] !== $spec->getProperty($property)) {
+                return false;
+            }
         }
-        if (!isset($this->model) || $this->model !== $otherSpec->getModel()) {
-            return false;
-        }
-        if (!$this->type->equals($otherSpec->getType())) {
-            return false;
-        }
-        if (!$this->backWood->equals($otherSpec->getBackWood())) {
-            return false;
-        }
-        if (!$this->topWood->equals($otherSpec->getTopWood())) {
-            return false;
-        }
-
         return true;
     }
+
 }

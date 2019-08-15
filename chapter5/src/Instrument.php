@@ -2,7 +2,7 @@
 
 namespace Chapter5;
 
-abstract class Instrument
+class Instrument
 {
     /**
      * @var string

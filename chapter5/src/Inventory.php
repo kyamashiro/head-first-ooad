@@ -24,15 +24,7 @@ class Inventory
      */
     public function addInstrument(string $serialNumber, float $price, InstrumentSpec $spec): void
     {
-        $instrument = null;
-
-        if ($spec instanceof GuitarSpec) {
-            $instrument = new Guitar($serialNumber, $price, $spec);
-        } else if ($spec instanceof MandolinSpec) {
-            $instrument = new Mandolin($serialNumber, $price, $spec);
-        }
-
-        $this->inventory[] = $instrument;
+        $this->inventory[] = new Instrument($serialNumber, $price, $spec);
     }
 
     /**
